@@ -1,7 +1,7 @@
  
 #  SPH Approximation on test functions
 This repo uses SPH approximation on different test functions with different kernel functions.<br/>
-Test functions: [see pdf](https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/Derivatives.pdf) <br/>
+Test functions: [[see pdf](https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/Derivatives.pdf)] <br/>
 - `R_function` <br/>
 - `Sin_function` <br/>
 - `Cos_function` <br/>
@@ -13,8 +13,8 @@ Kernel functions: <br/>
 - `WendlandQuinticC2` <br/>
 
 ## Repository overview
-[SPH_Approximation.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/SPH_Approximation.py): Main code to run SPH approximation on test functions <br/>
-[Gambaruto_2015_formulation.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/Gambaruto_2015_formulation.py): Gambaruto's formulation for approximation <br/>
+[SPH_Approximation.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/SPH_Approximation.py): Main code to run SPH approximation on test functions [[see pdf](https://interactivecomputergraphics.github.io/SPH-Tutorial/pdf/SPH_Tutorial.pdf)] <br/>
+[Gambaruto_2015_formulation.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/Gambaruto_2015_formulation.py): Gambaruto's formulation for approximation [[see pdf](https://www.sciencedirect.com/science/article/pii/S0021999115005665)] <br/>
 [test_functions.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/test_functions.py): Stores various of test functions <br/>
 [kernel_functions.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/kernel_functions.py): Stores various of kernel functions <br/>
 [plot_functions.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/plot_functions.py): Stores functions for visualisation <br/>
