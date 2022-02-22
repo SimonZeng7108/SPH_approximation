@@ -1,10 +1,16 @@
  
 #  SPH Approximation on test functions
 This repo uses SPH approximation on different test functions with different kernel functions.<br/>
-Test functions[see pdf](https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/Derivatives.pdf):
-R_function:$`\sqrt{2}`$ <br/>
-Sin_function:<br/>
-cos_function:<br/>
+Test functions: [see pdf](https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/Derivatives.pdf) <br/>
+- `R_function` <br/>
+- `Sin_function` <br/>
+- `Cos_function` <br/>
+
+Kernel functions: <br/>
+- `Gaussian` <br/>
+- `Shepherd` <br/>
+- `CubicSpline` <br/>
+- `WendlandQuinticC2` <br/>
 
 ## Repository overview
 [SPH_Approximation.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/SPH_Approximation.py): Main code to run SPH approximation on test functions <br/>
@@ -20,10 +26,46 @@ cos_function:<br/>
 
 
 # Results
+*(left: Analytical; right: Numerical)*
 ## Test function: R function; Kernel: Gaussian; Samples: 900:
-Gradient approximation<br/>
+**Gradient approximation**<br/>
 <img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient.png" width="224" height="168">
 <img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_numerical.png" width="224" height="168"><br/>
+
+**Magnitude of Gradient approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_magnitude.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_magnitude_numerical.png" width="224" height="168"><br/>
+
+**Laplacian approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_laplacian.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_laplacian_numerical.png" width="224" height="168"><br/>
+
+## Test function: Sin function; Kernel: Gaussian; Samples: 900:
+**Gradient approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_numerical.png" width="224" height="168"><br/>
+
+**Magnitude of Gradient approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_magnitude.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_magnitude_numerical.png" width="224" height="168"><br/>
+
+**Laplacian approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_laplacian.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_laplacian_numerical.png" width="224" height="168"><br/>
+
+## Test function: Cos function; Kernel: Gaussian; Samples: 900:
+**Gradient approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_numerical.png" width="224" height="168"><br/>
+
+**Magnitude of Gradient approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude_numerical.png" width="224" height="168"><br/>
+
+**Laplacian approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_laplacian.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_laplacian_numerical.png" width="224" height="168"><br/>
+
 
 
 
