@@ -1,8 +1,10 @@
  
 #  SPH Approximation on test functions
 This repo uses SPH approximation on different test functions with different kernel functions.<br/>
-This is an extended work and Pytorch implementation of [Coral Density Estimation Project](https://vilab.blogs.bristol.ac.uk/2021/01/analysis-of-coral-using-deep-learning/).<br/>
-The dataset is downloaded from the original repo by [Ainsley Rutterford](https://github.com/ainsleyrutterford/deep-learning-coral-analysis/blob/master/README.md). 
+Test functions[see pdf](https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/Derivatives.pdf):
+R_function:$`\sqrt{2}`$ <br/>
+Sin_function:<br/>
+cos_function:<br/>
 
 ## Repository overview
 [SPH_Approximation.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/SPH_Approximation.py): Main code to run SPH approximation on test functions <br/>
