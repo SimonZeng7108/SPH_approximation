@@ -20,8 +20,8 @@ The dataset is downloaded from the original repo by [Ainsley Rutterford](https:/
 # Results
 ## Test function: R function; Kernel: Gaussian; Samples: 900:
 Gradient approximation<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient.png" width="300" height="300">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_numerical.png" width="300" height="300"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient.png" width="224" height="168">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_numerical.png" width="224" height="168"><br/>
 
 
 
