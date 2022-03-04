@@ -19,7 +19,8 @@ from kernel_functions import Gaussian, d_Gaussian, dd_Gaussian
 from kernel_functions import Shepherd, d_Shepherd, dd_Shepherd
 from kernel_functions import CubicSpline, d_CubicSpline, dd_CubicSpline
 from kernel_functions import WendlandQuinticC2, d_WendlandQuinticC2, dd_WendlandQuinticC2
-from kernel_functions import dd_viscousity
+from taichikernels import cubic_kernel, cubic_kernel_derivative
+
 function = np.vectorize(CosFunction)                      #change the functions here
 d_function = np.vectorize(d_CosFunction)
 dd_function = np.vectorize(dd_CosFunction)
