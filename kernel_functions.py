@@ -179,12 +179,12 @@ if __name__ == '__main__':
     # from kernel_functions import WendlandQuinticC2, d_WendlandQuinticC2, dd_WendlandQuinticC2
 
     #plot kernel function
-    kernel = np.vectorize(Gaussian)
-    d_kernel = np.vectorize(d_Gaussian)
-    dd_kernel = np.vectorize(dd_Gaussian)
+    kernel = np.vectorize(CubicSpline)
+    d_kernel = np.vectorize(d_CubicSpline)
+    dd_kernel = np.vectorize(dd_CubicSpline)
     domain = 2                               #grid range
     particles_per_row = 50                 #grid density
-    h = 10 * domain/particles_per_row
+    h = 20 * domain/particles_per_row
     c = 20 * domain/particles_per_row
     x = np.linspace(-domain, domain, particles_per_row)
     y = np.linspace(-domain, domain, particles_per_row)

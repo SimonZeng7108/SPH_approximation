@@ -12,3 +12,9 @@ def CalculateDensity(m, kernel, x, y, h, c ):
     density = np.sum(m * kernel(x, y, h, c))
     # normalised_density = density / np.sum(kernel(distance, h, c))
     return density
+
+def CalculateDensity_taichi(m, kernel, r, h):
+    'Compute density based on particle distances'
+    density = np.sum(m * kernel(r, h))
+    # normalised_density = density / np.sum(kernel(distance, h, c))
+    return density

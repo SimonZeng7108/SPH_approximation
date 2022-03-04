@@ -46,7 +46,7 @@ def plot_gradient_2D(x, y, dx, dy, i, title, show=False, save = False, keep = Fa
 def plot_XYZ_2D(x, y, z, i, title, show=False, save = False, keep = False):
     fig = plt.figure(i)
     fig.canvas.set_window_title(title)
-    plt.scatter(x, y, c=z, cmap='jet',vmin=0, vmax=1, marker = '.')
+    plt.scatter(x, y, c=z, cmap='jet',vmin=0, vmax=30, marker = '.')
     plt.colorbar().ax.set_ylabel('z', rotation=270)
     if show == True:
         plt.show()

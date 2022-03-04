@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.ticker import LinearLocator, FormatStrFormatter
 
-from utilities import Cutoff, CalculateDensity
+from utilities import Cutoff, CalculateDensity_taichi
 from plot_functions import plot_XYZ_3D as plot3D
 from plot_functions import plot_gradient_2D as plot_grad
 from plot_functions import plot_XYZ_2D as plot2D
@@ -15,27 +15,23 @@ from test_functions import RFunction, d_RFunction, dd_RFunction
 from test_functions import SineFunction, d_SineFunction, dd_SineFunction
 from test_functions import CosFunction, d_CosFunction, dd_CosFunction
 from test_functions import FrankeFunction, d_FrankeFunction, dd_FrankeFunction
-from kernel_functions import Gaussian, d_Gaussian, dd_Gaussian
-from kernel_functions import Shepherd, d_Shepherd, dd_Shepherd
-from kernel_functions import CubicSpline, d_CubicSpline, dd_CubicSpline
-from kernel_functions import WendlandQuinticC2, d_WendlandQuinticC2, dd_WendlandQuinticC2
+
 from taichikernels import cubic_kernel, cubic_kernel_derivative
 
 function = np.vectorize(CosFunction)                      #change the functions here
 d_function = np.vectorize(d_CosFunction)
 dd_function = np.vectorize(dd_CosFunction)
-kernel = np.vectorize(CubicSpline)                #change the gradients here
-d_kernel = np.vectorize(d_CubicSpline)
-dd_kernel = np.vectorize(dd_CubicSpline)
+kernel = np.vectorize(cubic_kernel)                #change the gradients here
+d_kernel = np.vectorize(cubic_kernel_derivative)
+
 #######setup constants#######
-particles_per_row_list = [30]             #grid density
+particles_per_row_list = [40]             #grid density
 
 for particles_per_row in particles_per_row_list:
     domain = 4                                  #grid range
-    
+    m = 1                                       #particle mass       
     h = 4 * domain/particles_per_row            #smoothing length
-    m_v = 0.8 * (domain/particles_per_row)**2   #particle volume   
-    a = 4
+    a = 8
     c = a * domain/particles_per_row            #cutting off distance
     x = np.linspace(-domain, domain, particles_per_row) 
     y = np.linspace(-domain, domain, particles_per_row)
@@ -61,10 +57,11 @@ for particles_per_row in particles_per_row_list:
             x_dis = x[i, j] - x
             y_dis = y[i, j] - y
             r = np.sqrt(x_dis**2 + y_dis**2)
-            weights = kernel(x_dis, y_dis, h, c)
-            density[i, j] = CalculateDensity(m_v, kernel, x_dis, y_dis, h, c)
-    mass = np.ones_like(density) * m_v
-
+            weights = kernel(r, h)
+            density[i, j] = CalculateDensity_taichi(m, kernel, r, h)
+    mass = np.ones_like(density) * m
+    # print(density)
+    # fig_density = plot2D(x, y, density, 123, 'Density', show = True)
 
     cut = np.vectorize(Cutoff)
     approxi_z = np.zeros_like(z)
@@ -75,31 +72,32 @@ for particles_per_row in particles_per_row_list:
         for j in range(x.shape[1]):
             x_dis = x[i, j] - x
             y_dis = y[i, j] - y
-            r = np.sqrt(x_dis**2 + y_dis**2)
 
-            neighbours = cut(r, c)  
-            
-            density_i = density[i, j]
+
+            neighbours = cut(r, c) 
+            x_dis = x_dis * neighbours
+            y_dis = y_dis * neighbours
+            r = np.sqrt(x_dis**2 + y_dis**2)
+            r[r == 0] = 1e-10
+
             density_j = density * neighbours
             density_j[density_j == 0] = 1e-10
             mass_j = mass * neighbours
-            
-            x_dis = x_dis * neighbours
-            y_dis = y_dis * neighbours
-            weights = kernel(x_dis, y_dis, h, c)
-            d_weights_dx, d_weights_dy = d_kernel(x_dis, y_dis, h, c)
-            dd_weights = dd_kernel(x_dis, y_dis, h, c)
-            
+
+
+            weights = kernel(r, h)
+            d_weights_dx, d_weights_dy = d_kernel(x_dis, y_dis, h)
+
             
             phi_i = z[i, j]
             phi_j = z * neighbours
-            r[r == 0] = 1e-10
+            
 
             
-            approxi_z[i, j] = np.sum(z * mass_j / density_j * weights)
-            approxi_dz_dx[i, j] = density_i*np.sum(mass_j * (phi_i/density_i**2 +  phi_j/density_j**2) * d_weights_dx)
-            approxi_dz_dy[i, j] = density_i*np.sum(mass_j * (phi_i/density_i**2 +  phi_j/density_j**2)  * d_weights_dy)
-            approxi_ddz[i, j] = 8*np.sum( mass_j / density_j * (phi_j -  phi_i) * r / (r**2) * (np.sqrt(d_weights_dx**2 + d_weights_dy**2)))
+            approxi_z[i, j] = np.sum(z * mass_j / density_j * weights) / np.sum(weights) # mass_j / density_j
+            approxi_dz_dx[i, j] = np.sum((phi_i -  phi_j) * d_weights_dx) / np.sum(weights)
+            approxi_dz_dy[i, j] = np.sum((phi_i -  phi_j)  * d_weights_dy) / np.sum(weights)
+            approxi_ddz[i, j] = - 8*np.sum((phi_i -  phi_j) * r / (r**2) * (np.sqrt(d_weights_dx**2 + d_weights_dy**2)))/ np.sum(weights)
 
 
 

@@ -12,7 +12,7 @@ def cubic_kernel(r_norm, h):
             res = k * (6.0 * q3 - 6.0 * q2 + 1)
         else:
             res = k * 2 * (1 - q)**3
-    print('cubic kernel ------', res)
+    # print('cubic kernel ------', res)
     return res
 
 
@@ -31,7 +31,7 @@ def cubic_kernel_derivative(x, y, h):
         else:
             factor = 1.0 - q
             res = k * (-factor * factor) * grad_q
-    print('cubic kernel derivatives------', res)
+    # print('cubic kernel derivatives------', res)
     return res[0], res[1]
 
 if __name__ == '__main__':
