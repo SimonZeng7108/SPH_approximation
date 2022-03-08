@@ -14,7 +14,9 @@ Kernel functions: <br/>
 
 Approximation formulations: <br/>
 - `Monaghan 2005`[[see pdf](https://interactivecomputergraphics.github.io/SPH-Tutorial/pdf/SPH_Tutorial.pdf)] <br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/SPH_form.png" width="300" height="200"><br/>
 - `Gambaruto 2015`[[see pdf](https://www.sciencedirect.com/science/article/pii/S0021999115005665)]<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/gambaruto_form.png" width="300" height="120"><br/>
 
 ## Repository overview
 [SPH_Approximation.py](https://github.com/SimonZeng7108/SPH_approximation/blob/main/SPH_Approximation.py): Main code to run SPH approximation on test functions  <br/>
@@ -31,44 +33,56 @@ Approximation formulations: <br/>
 
 # Results
 *(left: Analytical; right: Numerical)*
-## Test function: R function; Kernel: Gaussian; Samples: 900:
+## Test function: R function; Kernel: Cubic Spline; Samples: 900:
+**Function approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_analytical.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_Numerical.png" width="320" height="240"><br/>
+
 **Gradient approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_numerical.png" width="320" height="240"><br/>
 
 **Magnitude of Gradient approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_magnitude.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_magnitude_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_magnitude.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_gradient_magnitude_numerical.png" width="320" height="240"><br/>
 
 **Laplacian approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_laplacian.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_laplacian_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_laplacian.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/r_function_laplacian_numerical.png" width="320" height="240"><br/>
 
-## Test function: Sin function; Kernel: Gaussian; Samples: 900:
+## Test function: Sin function; Kernel: Cubic Spline; Samples: 900:
+**Function approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_Analytical.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_numerical.png" width="320" height="240"><br/>
+
 **Gradient approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_numerical.png" width="320" height="240"><br/>
 
 **Magnitude of Gradient approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_magnitude.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_magnitude_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_magnitude.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_gradient_magnitude_numerical.png" width="320" height="240"><br/>
 
 **Laplacian approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_laplacian.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_laplacian_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_laplacian.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/sin_function_laplacian_numerical.png" width="320" height="240"><br/>
 
-## Test function: Cos function; Kernel: Gaussian; Samples: 900:
+## Test function: Cos function; Kernel: Cubic Spline; Samples: 900:
+**Function approximation**<br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_Analytical.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_numerical.png" width="320" height="240"><br/>
+
 **Gradient approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_numerical.png" width="320" height="240"><br/>
 
 **Magnitude of Gradient approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude_numerical.png" width="320" height="240"><br/>
 
 **Laplacian approximation**<br/>
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_laplacian.png" width="224" height="168">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_laplacian_numerical.png" width="224" height="168"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_laplacian.png" width="320" height="240">
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_laplacian_numerical.png" width="320" height="240"><br/>
 
 
 
