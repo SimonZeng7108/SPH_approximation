@@ -21,12 +21,12 @@ from kernel_functions import CubicSpline, d_CubicSpline, dd_CubicSpline
 from kernel_functions import WendlandQuinticC2, d_WendlandQuinticC2, dd_WendlandQuinticC2
 from taichikernels import cubic_kernel, cubic_kernel_derivative
 
-function = np.vectorize(CosFunction)                      #change the functions here
-d_function = np.vectorize(d_CosFunction)
-dd_function = np.vectorize(dd_CosFunction)
-kernel = np.vectorize(CubicSpline)                #change the gradients here
-d_kernel = np.vectorize(d_CubicSpline)
-dd_kernel = np.vectorize(dd_CubicSpline)
+function = np.vectorize(SineFunction)                      #change the functions here
+d_function = np.vectorize(d_SineFunction)
+dd_function = np.vectorize(dd_SineFunction)
+kernel = np.vectorize(Gaussian)                #change the gradients here
+d_kernel = np.vectorize(d_Gaussian)
+dd_kernel = np.vectorize(dd_Gaussian)
 #######setup constants#######
 particles_per_row_list = [30]             #grid density
 
@@ -116,9 +116,9 @@ for particles_per_row in particles_per_row_list:
     fig8 = plot3D(x[a : -a, a: -a], y[a : -a, a: -a], approxi_ddz[a : -a, a: -a], 8, 'Approximated laplacian', show = True)
 
     #######caculate RMS-errors#######
-    function_rms_error = np.sum(abs((approxi_z[a : -a, a: -a] - z[a : -a, a: -a])))/(x.shape[0]-a)
-    d_function_rms_error = np.sum(abs((approxi_dz[a : -a, a: -a] - dz[a : -a, a: -a])))/(x.shape[0]-a)
-    dd_function_rms_error = np.sum(abs((approxi_ddz[a : -a, a: -a] - ddz[a : -a, a: -a])))/(x.shape[0]-a)
+    function_rms_error = np.sum(abs((approxi_z[a : -a, a: -a] - z[a : -a, a: -a])))/(x.shape[0]-a)**2
+    d_function_rms_error = np.sum(abs((approxi_dz[a : -a, a: -a] - dz[a : -a, a: -a])))/(x.shape[0]-a)**2
+    dd_function_rms_error = np.sum(abs((approxi_ddz[a : -a, a: -a] - ddz[a : -a, a: -a])))/(x.shape[0]-a)**2
     print('number of particles:', str(x.shape[0]**2), 
     '   f rms:', str(function_rms_error), 
     '   d_f rms:', str(d_function_rms_error),
