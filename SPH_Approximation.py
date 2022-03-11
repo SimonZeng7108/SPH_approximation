@@ -19,7 +19,7 @@ from kernel_functions import Gaussian, d_Gaussian, dd_Gaussian
 from kernel_functions import Shepherd, d_Shepherd, dd_Shepherd
 from kernel_functions import CubicSpline, d_CubicSpline, dd_CubicSpline
 from kernel_functions import WendlandQuinticC2, d_WendlandQuinticC2, dd_WendlandQuinticC2
-from taichikernels import cubic_kernel, cubic_kernel_derivative
+
 
 function = np.vectorize(SineFunction)                      #change the functions here
 d_function = np.vectorize(d_SineFunction)
