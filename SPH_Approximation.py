@@ -21,9 +21,9 @@ from kernel_functions import CubicSpline, d_CubicSpline, dd_CubicSpline
 from kernel_functions import WendlandQuinticC2, d_WendlandQuinticC2, dd_WendlandQuinticC2
 
 
-function = np.vectorize(SineFunction)                      #change the functions here
-d_function = np.vectorize(d_SineFunction)
-dd_function = np.vectorize(dd_SineFunction)
+function = np.vectorize(CosFunction)                      #change the functions here
+d_function = np.vectorize(d_CosFunction)
+dd_function = np.vectorize(dd_CosFunction)
 kernel = np.vectorize(Gaussian)                #change the gradients here
 d_kernel = np.vectorize(d_Gaussian)
 dd_kernel = np.vectorize(dd_Gaussian)
@@ -35,8 +35,10 @@ for particles_per_row in particles_per_row_list:
     
     h = 4 * domain/particles_per_row            #smoothing length
     m_v = 0.8 * (domain/particles_per_row)**2   #particle volume   
-    a = 4
-    c = a * domain/particles_per_row            #cutting off distance
+    rho_0 = 10
+    m = m_v * rho_0
+    a = 6
+    c = a * 2 * domain/particles_per_row            #cutting off distance
     x = np.linspace(-domain, domain, particles_per_row) 
     y = np.linspace(-domain, domain, particles_per_row)
     x, y = np.meshgrid(x.round(decimals=3), y.round(decimals=3))
@@ -62,8 +64,8 @@ for particles_per_row in particles_per_row_list:
             y_dis = y[i, j] - y
             r = np.sqrt(x_dis**2 + y_dis**2)
             weights = kernel(x_dis, y_dis, h, c)
-            density[i, j] = CalculateDensity(m_v, kernel, x_dis, y_dis, h, c)
-    mass = np.ones_like(density) * m_v
+            density[i, j] = CalculateDensity(m, kernel, x_dis, y_dis, h, c)
+    mass = np.ones_like(density) * m
 
 
     cut = np.vectorize(Cutoff)
@@ -99,8 +101,8 @@ for particles_per_row in particles_per_row_list:
             approxi_z[i, j] = np.sum(z * mass_j / density_j * weights)
             approxi_dz_dx[i, j] = density_i*np.sum(mass_j * (phi_i/density_i**2 +  phi_j/density_j**2) * d_weights_dx)
             approxi_dz_dy[i, j] = density_i*np.sum(mass_j * (phi_i/density_i**2 +  phi_j/density_j**2)  * d_weights_dy)
-            approxi_ddz[i, j] = 8*np.sum( mass_j / density_j * (phi_j -  phi_i) * r / (r**2) * (np.sqrt(d_weights_dx**2 + d_weights_dy**2)))
-
+            # approxi_ddz[i, j] = 8*np.sum( mass_j / density_j * (phi_j -  phi_i) * r / (r**2) * (np.sqrt(d_weights_dx**2 + d_weights_dy**2))) #divergence free formulation
+            approxi_ddz[i, j] = np.sum( mass_j / density_j * (phi_j -  phi_i) * 2 *(np.sqrt(d_weights_dx**2 + d_weights_dy**2)) / r )
 
 
 
