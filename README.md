@@ -78,7 +78,7 @@ Approximation formulations: <br/>
 
 **Magnitude of Gradient approximation**<br/>
 <img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude.png" width="320" height="240">
-<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude_numerical.png" width="320" height="240"><br/>
+<img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_gradient_magnitude_numerica.png" width="320" height="240"><br/>
 
 **Laplacian approximation**<br/>
 <img src="https://github.com/SimonZeng7108/SPH_approximation/blob/main/results/cos_function_laplacian.png" width="320" height="240">
